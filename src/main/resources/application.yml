@@ -1,0 +1,72 @@
+spring:
+    application:
+        name: carrieroperator
+    datasource:
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/carrierdata?characterEncoding=utf8&&useSSL=true
+        hikari:
+          connection-timeout: 3000
+          maximum-pool-size: 10
+    quartz:
+      properties:
+        org.quartz.threadPool.threadCount: 10
+mybatis:
+    configuration:
+        map-underscore-to-camel-case: true
+        default-fetch-size: 100
+        default-statement-timeout: 30
+server:
+    ssl:
+        enabled: true
+        key-store: classpath:keystore.p12
+        key-store-password: lst601815
+        key-store-type: PKCS12
+        key-alias: tomcat
+    http2:
+        enabled: true
+    port: 8543
+    tomcat:
+        max-threads: 100
+logging:
+    level:
+        root: info
+        com.lstfight: info
+    file: log/jobobexecute.log
+---
+spring:
+  profiles: prod
+  datasource:
+          username: root
+          password: lst601815
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/carrierdata?characterEncoding=utf8&&useSSL=true
+          hikari:
+            connection-timeout: 3000
+            maximum-pool-size: 10
+  quartz:
+    properties:
+        org.quartz.threadPool.threadCount: 10
+mybatis:
+    configuration:
+        map-underscore-to-camel-case: true
+        default-fetch-size: 100
+        default-statement-timeout: 30
+server:
+    ssl:
+        enabled: true
+        key-store: classpath:keystore.p12
+        key-store-password: lst601815
+        key-store-type: PKCS12
+        key-alias: tomcat
+    http2:
+      enabled: true
+    port: 8543
+    tomcat:
+          max-threads: 100
+logging:
+      level:
+          root: info
+          com.lstfight: info
+      file: log/jobobexecute.log
